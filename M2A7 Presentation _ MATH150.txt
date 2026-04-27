@@ -1,0 +1,164 @@
+Modeling the American Workforce: A Compartmental Analysis of U.S. Employment Status (1955-Present)
+
+
+By: Alexzia Gutierrez, Tina Li, Sharlize Berrospe, Kurt Qin, Yi Fei Tao
+Math 150: Math Modeling
+
+Background
+
+
+
+
+Why do we care?
+
+Important signal of changes and current conditions in the labor market and economy.
+Measures economic health for expansions and recessions
+Determines interest rates and monetary policies for stable pricing
+
+
+What are we observing?
+
+Long-term labor trends in the U.S. from 1955 to present to understand how the workforce grows and responds to economic shocks
+This study identifies how employment levels deviate from their long-term linear growth during periods of instability
+
+Origin:
+U.S. Bureau of Labor Statistics (BLS)
+Collected via the Current Population Survey (CPS)
+Tracks the civilian noninstitutional population
+
+
+
+Data
+
+Observed trends:
+Overall linear increase in employment
+Dips in total employment rate (E) coincide with major U.S. recessions:
+2020 Pandemic Recession (quick recovery)
+2008 Great Recession (very slow recovery)
+Recessions in 1980-1982, 1990-1991, 1973-1975
+Employment rate is a “lagging” indicator, so it drops after a recession begins  and recovers much later than when the economy starts to grow again.
+Different recessions shift people differently between compartments (E→U, E→N)
+
+Employed civilians (E)
+Unemployed civilians in the labor force (U)
+Unemployed civilians out of the labor force (N)
+2008
+2020
+
+E
+U
+N
+α
+β
+δ
+γ
+Employed (E) 
+people who currently have a job
+Unemployed (U) 
+people who are jobless, but are actively looking for work in the last 4 weeks
+Not in labor force (N) 
+people who are not working and not seeking employment
+Total population (M) 
+civilian noninstitutional population age 16 and older that can be employed
+Time (t)
+
+Parameters
+ α  - rate employed people lose their job 
+ β  - rate unemployed people find jobs 
+ γ  - rate unemployed people  stop searching and leave labor force 
+ δ  - rate people not in the labor force start searching for jobs  
+ η  - rate employed people leave the labor force entirely
+System of Differential Equations
+dE/dt = βU - αE - ηE
+dU/dt = αE + δN - βU - γU
+dN/dt = ηE + γU -δN
+
+η
+Model
+
+Units
+[α] = [β] = [γ] = [δ] = [η] = 1/year
+[t] = year
+[E] = [U] = [N] = people, [M] = people
+Assumptions 
+Constant total population, M 
+Constant parameters 
+People in each compartment has the same transition rate
+
+
+
+
+
+
+
+
+
+   
+
+
+β: the rate at which unemployed individuals find jobs (U→E) 
+
+1/β: The time spent on finding a job 
+
+t*: The proportion of time(t) to the time spent on job hunting(1/β)
+
+
+E*: The proportion of people currently have a job(E) in the total population(M).
+U*: The proportion of people currently unemployed and are looking for a job(U) in the total population(M).
+
+N*: The proportion of people currently don’t have a job(E) and do not look for a job in the total population(M).
+Nondimensionalization
+
+
+
+
+The nondimensional system describes how the proportions of employed, unemployed, and not in labor force  evolve over scaled time.
+Each equation represents the balance of inflows and outflows between compartments, governed by dimensionless parameters that capture the relative strengths of transition rates.
+Nondimensionalization
+
+
+
+
+Steady State
+
+(dimensionally):
+(non-dimensionally):
+
+ 
+ 
+Model Solution 
+For our model we used the following initial conditions : 
+A starting population of 100,000
+α = 0.04
+β = 0.30
+γ = 0.08
+δ = 0.05
+η = 0.05
+E(0) = 0.57
+U(0) = 0.03
+N(0) = 0.4
+We also made the assumption our population and transition rates were fixed.
+State Behavior 
+All three compartments experience rapid change initially
+System converges to a stable equilibrium determined by transition rates
+Variables are strongly coupled, so changes in one compartment affect the others
+The system shows smooth, exponential-type behavior
+All compartments decrease over time and approach zero
+
+Initial Conditions and Parameters
+We started with a population of 100,000 people, an alpha value of 0.04 which represents the rate at which employed people become unemployed. A beta value of 0.3 which which corresponds to the rate at which unemployed people become employed, a gamma value of 0.08 which is the rate at which unemployed people leave the labor force, a delta value of 0.05 which represents the rate at which people not in the labor force join the labor force, and an eta rate of 0.05 which corresponds to the rate at which employed people leave the labor force. As was mentioned earlier, one of our core assumptions was that our population as well as the transition rates were fixed. For the initial sizes of our compartments, we picked the employed to be roughly 60% of the population, the unemployed to be 3 % of the population, and the not in the labor force makes up the last 40 % of the population. All of these values were picked because they reflect the same conditions found at the beginning of our data set. Now looking at the state behavior, we can see some very clear trends in the graph which plots all three compartments according to the nondimensionalized system. As we can see the initial drop settles into a smooth equilibrium determined by the fixed transition rates. The initial drop is explained by the nature of the system of ODE’s, the compartments are dependent on one another and there is more loss than gain across the compartments, so everything gradually decreases over time.”
+
+Comparing Model Solution with Data
+Models converge to zero population; Not conserved. 
+Negative population from unemployed likely caused population loss.
+Potential improvements:
+2nd Derivative ODEs, to specify I.C.s at end of time.
+Fourth ODE for source population, increasing over time.
+
+
+Conclusion
+For future modeling, attempt different systems of ODEs, focused on incorporating changing population over time.
+Following SIS model appeared to work well on paper, in program not so much.
+Hardest challenge was to address variable population.
+Analyzing employment statistics in different time periods was the most interesting, e.g. 2008, 2020.
+
